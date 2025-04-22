@@ -4,6 +4,7 @@ import Link from 'next/link';
 
 export default function FlowerShopPage() {
   const flowerProducts = [
+    // HEBAT
     {
       id: 1,
       name: 'Sunset Charm',

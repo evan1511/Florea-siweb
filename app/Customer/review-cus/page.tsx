@@ -10,7 +10,7 @@ export default function FlowerShopReviewPage() {
       daysAgo: '4 Hari Lalu',
       rating: 5,
       comment: '"Bunganya Sangat Indah Dan Segar! Pengiriman Cepat, Dan Pelayanan Sangat Ramah. Pasti Akan Membeli Lagi!"',
-      avatar: '/images/reviews/avatar-robin.jpg'
+      avatar: '/Profil.png'
     },
     {
       id: 2,
@@ -18,7 +18,7 @@ export default function FlowerShopReviewPage() {
       daysAgo: '2 Hari Lalu',
       rating: 3,
       comment: '"Bunganya Cukup Bagus, Tapi Pengirimannya Agak Lama. Harap Bisa Ditingkatkan Lagi Ke Depannya."',
-      avatar: '/images/reviews/avatar-manchester.jpg'
+      avatar: '/Profil.png'
     },
     {
       id: 3,
@@ -26,7 +26,7 @@ export default function FlowerShopReviewPage() {
       daysAgo: '7 Hari Lalu',
       rating: 4,
       comment: '"Layanan Luar Biasa! Bunga Dikemas Dengan Baik Dan Sesuai Dengan Foto. Sangat Puas Dengan Kualitasnya, Tapi Pengirimannya Lama."',
-      avatar: '/images/reviews/avatar-evan.jpg'
+      avatar: '/Profil.png'
     },
     {
       id: 4,
@@ -34,7 +34,7 @@ export default function FlowerShopReviewPage() {
       daysAgo: '1 Tahun Lalu',
       rating: 1,
       comment: '"Sayangnya, Pengalaman Saya Kurang Baik. Bunga Datang Dalam Kondisi Kurang Segar Dan Pengiriman Sangat Lama."',
-      avatar: '/images/reviews/avatar-dadang.jpg'
+      avatar: '/Profil.png'
     }
   ];
 

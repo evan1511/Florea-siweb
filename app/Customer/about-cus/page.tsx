@@ -8,19 +8,19 @@ export default function AboutPage() {
     {
       name: "Robin Jauhari",
       username: "Username",
-      imageSrc: "/public/Profil.png", // Ganti dengan path gambar yang sebenarnya
+      imageSrc: "/Profil.png", // Ganti dengan path gambar yang sebenarnya
       bgColor: "bg-green-500" // Fallback jika gambar gagal dimuat
     },
     {
       name: "Evan Abel Lesmana",
       username: "Username",
-      imageSrc: "/home/evan/next123/nextjs-dashboard/public/Profil.png", // Ganti dengan path gambar yang sebenarnya
+      imageSrc: "/Profil.png", // Ganti dengan path gambar yang sebenarnya
       bgColor: "bg-red-500" // Fallback jika gambar gagal dimuat
     },
     {
       name: "Berren Vesra Wibowo",
       username: "Username",
-      imageSrc: "/public/Profil.png", // Ganti dengan path gambar yang sebenarnya
+      imageSrc: "/Profil.png", // Ganti dengan path gambar yang sebenarnya
       bgColor: "bg-red-600" // Fallback jika gambar gagal dimuat
     }
   ];
@@ -80,9 +80,30 @@ export default function AboutPage() {
           <div className="bg-white rounded-3xl p-4">
             <h2 className="text-xl font-semibold mb-2">Find Us</h2>
             <div className="h-72 w-full rounded-2xl overflow-hidden bg-gray-200 relative">
-              {/* Replace with actual map - using placeholder for now */}
-              <div className="absolute inset-0 flex items-center justify-center text-gray-500">
-                Map location placeholder
+              {/* Replaced placeholder with actual map image */}
+              <Image 
+                src="/map.png" // Path to your map image in public folder
+                alt="Our location on map"
+                fill
+                sizes="(max-width: 768px) 100vw, 50vw"
+                className="object-cover"
+                onError={(e) => {
+                  // Fallback if map image fails to load
+                  const target = e.currentTarget;
+                  target.style.display = 'none';
+                  const container = target.parentElement;
+                  if (container) {
+                    const fallback = document.createElement('div');
+                    fallback.className = 'absolute inset-0 flex items-center justify-center text-gray-500';
+                    fallback.innerHTML = 'Map location placeholder';
+                    container.appendChild(fallback);
+                  }
+                }}
+              />
+              {/* Optional: Add a marker or overlay on the map */}
+              <div className="absolute bottom-4 right-4 bg-white p-2 rounded-lg shadow-md">
+                <p className="text-sm font-medium">Floréa Shop</p>
+                <p className="text-xs text-gray-600">Jl. Contoh No. 123, Jakarta</p>
               </div>
             </div>
           </div>
@@ -93,7 +114,7 @@ export default function AboutPage() {
             <div className="h-72 w-full rounded-2xl overflow-hidden bg-gray-100 relative">
               {/* Store image */}
               <Image 
-                src="/public/Toko.png" // Ganti dengan path gambar toko yang sebenarnya
+                src="/Toko.png" // Ganti dengan path gambar toko yang sebenarnya
                 alt="Our store"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
