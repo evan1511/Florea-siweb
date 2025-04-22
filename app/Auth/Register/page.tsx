@@ -66,7 +66,7 @@ const RegisterPage = () => {
         <div className="mt-4 text-center">
           <p className="text-sm text-[#3c2c1e]">
             Sudah punya akun?{' '}
-            <Link href="/login">
+            <Link href="/Auth/Login">
               Masuk
             </Link>
           </p>

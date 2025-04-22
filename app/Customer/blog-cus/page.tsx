@@ -46,8 +46,8 @@ export default function FlowerShopPage() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {flowerProducts.map((product) => (
             <div key={product.id} className="rounded-lg overflow-hidden">
-              {/* Product Image */}
-              <div className="relative h-72 overflow-hidden rounded-lg">
+              {/* Product Image - using the same style as in product/page.tsx */}
+              <div className="rounded-3xl overflow-hidden mb-4 bg-[#f0e9e0] aspect-square relative">
                 <Image
                   src={product.image}
                   alt={product.name}

@@ -19,7 +19,7 @@ export default function RusticBloomBoxPage() {
   const totalPrice = price * quantity;
 
   return (
-    <div className="min-h-screen bg-amber-50 p-6">
+    <div className="min-h-screen bg-[#f8f3ea] p-6">
       <div className="max-w-6xl mx-auto">
         {/* Product Section */}
         <div className="flex flex-col md:flex-row gap-8 pt-4">

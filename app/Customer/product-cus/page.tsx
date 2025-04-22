@@ -45,7 +45,7 @@ export default function ProductPage() {
 
   return (
     <div className="bg-[#f8f3ea] min-h-screen pb-16">
-      <div className="container mx-auto px-12 mt-12">
+      <div className="container mx-auto px-12 mt-6">
         <div className="grid grid-cols-3 gap-8">
           {products.map((product) => (
             <Link 

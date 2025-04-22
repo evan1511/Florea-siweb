@@ -1,10 +1,14 @@
+import Link from "next/link"
+
 const TransactionReportPage = () => {
     return (
       <div className="min-h-screen p-8">
         {/* Transaction Report Section */}
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-2xl font-semibold">Transaction Report</h2>
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-full">Add+</button>
+          <Link href="/Admin/formulir-tmtra">
+            <button className="bg-blue-500 text-white px-4 py-2 rounded-full">Add+</button>
+          </Link>
         </div>
   
         {/* Transaction Table */}
@@ -24,7 +28,9 @@ const TransactionReportPage = () => {
                 <td className="py-2 px-4">Rp 1.299.000</td>
                 <td className="py-2 px-4">12 - 10 - 2024</td>
                 <td className="py-2 px-4">
+                <Link href="/Admin/formulir-edtra">
                   <button className="text-blue-500">Edit</button>
+                </Link>
                 </td>
               </tr>
               <tr className="border-b">

@@ -2,6 +2,7 @@
 import React from 'react';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const Login: React.FC = () => {
   const [username, setUsername] = useState<string>('');
@@ -22,9 +23,11 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-[#f7f7f7]">
+    <div className="flex justify-center items-center min-h-screen bg-[#f7f0e8]">
       <div className="bg-white p-8 rounded-lg shadow-lg w-full sm:w-96">
-        <h1 className="text-4xl font-cursive text-[#b36b6b] text-center mb-8">Florea</h1>
+        <div className="text-center mb-8">
+        <h1 className="text-4xl font-serif font-bold text-[#3c2c1e]">Florea</h1>
+        </div>
         <form onSubmit={handleLogin}>
           <div className="mb-4">
             <input
@@ -46,17 +49,32 @@ const Login: React.FC = () => {
           </div>
           <button
             type="submit"
-            className="w-full bg-[#6d9dff] text-white p-3 rounded-lg hover:bg-[#5578f2]"
+            className="w-full py-2 bg-[#7f56d9] text-white font-semibold rounded-md hover:bg-[#6b46c1] transition"
           >
             LOGIN
           </button>
           {errorMessage && (
             <div className="text-red-500 text-sm mt-2">{errorMessage}</div>
           )}
-          <div className="flex justify-between items-center mt-4">
+          
+          <div className="mt-4 text-right">
+            <Link href="/Auth/Forgot">
+            Forgot password?
+            </Link>
+          </div>
+        
+          <div className="mt-4 text-center">
+          <p className="text-sm text-[#3c2c1e]">
+            Belum punya akun? {' '}
+            <Link href="/Auth/Register">
+            Buat akun
+            </Link>
+          </p>
+          </div>
+          {/* <div className="flex justify-between items-center mt-4">
             <a href="/Auth/Forgot" className="text-[#6d9dff] text-sm">Forgot password?</a>
             <a href="/Auth/Register" className="text-[#6d9dff] text-sm">belum punya akun? Buat akun</a>
-          </div>
+          </div> */}
         </form>
       </div>
     </div>
