@@ -1,36 +1,39 @@
-const Dashboard = () => {
+import { Card } from '@/app/ui/dashboard/cards';
+import RevenueChart from '@/app/ui/dashboard/revenue-chart';
+import LatestInvoices from '@/app/ui/dashboard/latest-invoices';
+import { lusitana } from '@/app/ui/fonts';
+import { fetchCardData, fetchRevenue, fetchLatestInvoices} from '@/app/lib/data'; 
+
+export default async function Page() {
+  const revenue = await fetchRevenue();
+  const latestInvoices = await fetchLatestInvoices();
+
+  const {
+    numberOfInvoices,
+    numberOfCustomers,
+    totalPaidInvoices,
+    totalPendingInvoices,
+  } = await fetchCardData();
+
   return (
-    <div className="min-h-screen flex flex-col">
-      {/* Header */}
-      <header className="flex justify-between items-center p-4 bg-gray-800 text-white">
-        <div className="flex items-center space-x-4">
-          <div className="font-bold">Evan</div>
-        </div>
-        <div className="text-lg">Dashboard</div>
-        <div className="flex items-center space-x-4">
-          <div>Search</div>
-        </div>
-      </header>
-
-      {/* Main Content */}
-      <main className="flex-1 p-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div className="bg-white p-6 rounded-lg shadow-md border-2 border-gray-300 flex flex-col items-center">
-            <div className="text-xl font-semibold mb-4">Catalog</div>
-            <div className="text-3xl font-bold">5.560</div>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-md border-2 border-gray-300 flex flex-col items-center">
-            <div className="text-xl font-semibold mb-4">Total Income</div>
-            <div className="text-3xl font-bold">Rp 984.562.433.04</div>
-          </div>
-          <div className="bg-white p-6 rounded-lg shadow-md border-2 border-gray-300 flex flex-col items-center">
-            <div className="text-xl font-semibold mb-4">Review</div>
-            <div className="text-3xl font-bold">19.302</div>
-          </div>
-        </div>
-      </main>
-    </div>
-  )
+    <main>
+      <h1 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
+        Dashboard
+      </h1>
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <Card title="Collected" value={totalPaidInvoices} type="collected" />
+        <Card title="Pending" value={totalPendingInvoices} type="pending" />
+        <Card title="Total Invoices" value={numberOfInvoices} type="invoices" />
+        <Card
+          title="Total Customers"
+          value={numberOfCustomers}
+          type="customers"
+        />
+      </div>
+      <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8">
+        <RevenueChart revenue={revenue}  />
+        <LatestInvoices latestInvoices={latestInvoices} />
+      </div>
+    </main>
+  );
 }
-
-export default Dashboard

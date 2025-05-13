@@ -129,6 +129,63 @@ const invoices = [
   },
 ];
 
+const products = [
+  {
+    id_produk: 'p001',
+    nama_produk: 'Spring Whisper',
+    harga: 880000,
+    jumlah_beli: 18
+  },
+  {
+    id_produk: 'p002',
+    nama_produk: 'Violet Dreams',
+    harga: 750000,
+    jumlah_beli: 10
+  },
+  {
+    id_produk: 'p003',
+    nama_produk: 'Rosy Embrace',
+    harga: 650000,
+    jumlah_beli: 7
+  },
+  {
+    id_produk: 'p004',
+    nama_produk: 'Rustic Bloom Box',
+    harga: 800000,
+    jumlah_beli: 50
+  },
+  {
+    id_produk: 'p005',
+    nama_produk: 'Lavender Serenity',
+    harga: 650000,
+    jumlah_beli: 20
+  },
+  {
+    id_produk: 'p006',
+    nama_produk: 'Blushing Elegance',
+    harga: 850000,
+    jumlah_beli: 9
+  },
+  {
+    id_produk: 'p007',
+    nama_produk: 'Pastel Garden',
+    harga: 850000,
+    jumlah_beli: 10
+  },
+  {
+    id_produk: 'p008',
+    nama_produk: 'Sunset Charm',
+    harga: 550000,
+    jumlah_beli: 10
+  },
+  {
+    id_produk: 'p009',
+    nama_produk: 'Royal Harmony',
+    harga: 950000,
+    jumlah_beli: 10
+  }
+];
+
 const revenue = [
   { month: 'Jan', revenue: 2000 },
   { month: 'Feb', revenue: 1800 },
