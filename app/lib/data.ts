@@ -6,7 +6,9 @@ import {
   InvoicesTable,
   LatestInvoiceRaw,
   Revenue,
+  ProductsRaw,
   Products,
+  MostProduct,
 } from './definitions';
 import { formatCurrency } from './utils';
 
@@ -42,6 +44,26 @@ export async function fetchLatestInvoices() {
 
     const latestInvoices = data.map((invoice) => ({
       ...invoice,
+      amount: formatCurrency(invoice.amount),
+    }));
+    return latestInvoices;
+  } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch the latest invoices.');
+  }
+}
+
+export async function fetchMostProduct() {
+  try {
+    const data = await sql<ProductsRaw[]>`
+      SELECT Products.amount, Products.name, Products.id, CustomersTableType.total_invoices
+      FROM invoices
+      JOIN CustomersTableType ON CustomersTableType.total_invoices = CustomersTableType.total_invoices
+      ORDER BY CustomersTableType.total_invoices DESC
+      LIMIT 1`;
+
+    const mostProduct = data.map((products) => ({
+      ...products,
       amount: formatCurrency(invoice.amount),
     }));
     return latestInvoices;

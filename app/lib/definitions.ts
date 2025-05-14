@@ -43,7 +43,18 @@ export type Products = {
   id: string;
   name: string;
   amount: string;
+  image_url: string;
+};
+
+export type MostProduct = {
+  id: string;
+  name: string;
+  amount: string;
   total_invoices: number;
+};
+
+export type ProductsRaw = Omit<Products, 'amount'> & {
+  amount: number;
 };
 
 // The database returns a number for amount, but we later format it to a string with the formatCurrency function
