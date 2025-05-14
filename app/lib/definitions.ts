@@ -18,6 +18,7 @@ export type Customer = {
 
 export type Invoice = {
   id: string;
+  id_product:string
   customer_id: string;
   amount: number;
   date: string;
@@ -33,6 +34,7 @@ export type Revenue = {
 
 export type LatestInvoice = {
   id: string;
+  id_product:string;
   name: string;
   image_url: string;
   email: string;
@@ -40,17 +42,17 @@ export type LatestInvoice = {
 };
 
 export type Products = {
-  id: string;
-  name: string;
-  amount: string;
+  id_product: string;
+  nama_product: string;
+  harga_product: string;
   image_url: string;
 };
 
 export type MostProduct = {
-  id: string;
-  name: string;
-  amount: string;
-  total_invoices: number;
+  id_product: string;
+  nama_product: string;
+  harga: string;
+  total_dibeli: number;
 };
 
 export type ProductsRaw = Omit<Products, 'amount'> & {
