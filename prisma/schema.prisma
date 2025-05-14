@@ -5,22 +5,28 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("postgres://neondb_owner:npg_ctnCmM5jb2Lp@ep-mute-hall-a13jbpxc-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require")
-}
+  url      = env("DATABASE_URL")}
 
 model MostProducts {
-  id_product  String     @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  nama_produk String @db.VarChar(255)
-  harga       Int 
-  total_beli  String @db.VarChar(255)
-}
-
-model Products {
-  id_product  String     @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  id_product  String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
   nama_produk String @db.VarChar(255)
   harga       Int
-  image_url String @db.VarChar(255)
+  total_beli  String @db.VarChar(255)
+
+  product     Products @relation(fields: [id_product], references: [id_product])
+
 }
+
+
+model Products {
+  id_product  String         @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  nama_produk String         @db.VarChar(255)
+  harga       Int
+  image_url   String         @db.VarChar(255)
+
+  mostProducts MostProducts[] // relasi balik (array)
+}
+
 
 
 model customers {
@@ -39,7 +45,7 @@ model invoices {
   status      String   @db.VarChar(255)
   date        DateTime @db.Date
 
- customer customers @relation (fields: [customer_id], references: [id])
+  customer customers @relation(fields: [customer_id], references: [id])
 }
 
 model revenue {
