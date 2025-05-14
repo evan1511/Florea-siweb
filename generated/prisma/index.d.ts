@@ -1228,6 +1228,36 @@ export namespace Prisma {
    */
 
 
+  /**
+   * Count Type CustomersCountOutputType
+   */
+
+  export type CustomersCountOutputType = {
+    invoices: number
+  }
+
+  export type CustomersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    invoices?: boolean | CustomersCountOutputTypeCountInvoicesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CustomersCountOutputType without action
+   */
+  export type CustomersCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CustomersCountOutputType
+     */
+    select?: CustomersCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CustomersCountOutputType without action
+   */
+  export type CustomersCountOutputTypeCountInvoicesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: invoicesWhereInput
+  }
+
 
   /**
    * Models
@@ -3421,6 +3451,8 @@ export namespace Prisma {
     name?: boolean
     email?: boolean
     image_url?: boolean
+    invoices?: boolean | customers$invoicesArgs<ExtArgs>
+    _count?: boolean | CustomersCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["customers"]>
 
   export type customersSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -3445,10 +3477,18 @@ export namespace Prisma {
   }
 
   export type customersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "email" | "image_url", ExtArgs["result"]["customers"]>
+  export type customersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    invoices?: boolean | customers$invoicesArgs<ExtArgs>
+    _count?: boolean | CustomersCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type customersIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type customersIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
 
   export type $customersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "customers"
-    objects: {}
+    objects: {
+      invoices: Prisma.$invoicesPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       name: string
@@ -3848,6 +3888,7 @@ export namespace Prisma {
    */
   export interface Prisma__customersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    invoices<T extends customers$invoicesArgs<ExtArgs> = {}>(args?: Subset<T, customers$invoicesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$invoicesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3898,6 +3939,10 @@ export namespace Prisma {
      */
     omit?: customersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customersInclude<ExtArgs> | null
+    /**
      * Filter, which customers to fetch.
      */
     where: customersWhereUniqueInput
@@ -3916,6 +3961,10 @@ export namespace Prisma {
      */
     omit?: customersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customersInclude<ExtArgs> | null
+    /**
      * Filter, which customers to fetch.
      */
     where: customersWhereUniqueInput
@@ -3933,6 +3982,10 @@ export namespace Prisma {
      * Omit specific fields from the customers
      */
     omit?: customersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customersInclude<ExtArgs> | null
     /**
      * Filter, which customers to fetch.
      */
@@ -3982,6 +4035,10 @@ export namespace Prisma {
      */
     omit?: customersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customersInclude<ExtArgs> | null
+    /**
      * Filter, which customers to fetch.
      */
     where?: customersWhereInput
@@ -4030,6 +4087,10 @@ export namespace Prisma {
      */
     omit?: customersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customersInclude<ExtArgs> | null
+    /**
      * Filter, which customers to fetch.
      */
     where?: customersWhereInput
@@ -4072,6 +4133,10 @@ export namespace Prisma {
      * Omit specific fields from the customers
      */
     omit?: customersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customersInclude<ExtArgs> | null
     /**
      * The data needed to create a customers.
      */
@@ -4120,6 +4185,10 @@ export namespace Prisma {
      * Omit specific fields from the customers
      */
     omit?: customersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customersInclude<ExtArgs> | null
     /**
      * The data needed to update a customers.
      */
@@ -4187,6 +4256,10 @@ export namespace Prisma {
      */
     omit?: customersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customersInclude<ExtArgs> | null
+    /**
      * The filter to search for the customers to update in case it exists.
      */
     where: customersWhereUniqueInput
@@ -4213,6 +4286,10 @@ export namespace Prisma {
      */
     omit?: customersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customersInclude<ExtArgs> | null
+    /**
      * Filter which customers to delete.
      */
     where: customersWhereUniqueInput
@@ -4233,6 +4310,30 @@ export namespace Prisma {
   }
 
   /**
+   * customers.invoices
+   */
+  export type customers$invoicesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the invoices
+     */
+    select?: invoicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the invoices
+     */
+    omit?: invoicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoicesInclude<ExtArgs> | null
+    where?: invoicesWhereInput
+    orderBy?: invoicesOrderByWithRelationInput | invoicesOrderByWithRelationInput[]
+    cursor?: invoicesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InvoicesScalarFieldEnum | InvoicesScalarFieldEnum[]
+  }
+
+  /**
    * customers without action
    */
   export type customersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4244,6 +4345,10 @@ export namespace Prisma {
      * Omit specific fields from the customers
      */
     omit?: customersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: customersInclude<ExtArgs> | null
   }
 
 
@@ -4445,6 +4550,7 @@ export namespace Prisma {
     amount?: boolean
     status?: boolean
     date?: boolean
+    customer?: boolean | customersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["invoices"]>
 
   export type invoicesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4453,6 +4559,7 @@ export namespace Prisma {
     amount?: boolean
     status?: boolean
     date?: boolean
+    customer?: boolean | customersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["invoices"]>
 
   export type invoicesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -4461,6 +4568,7 @@ export namespace Prisma {
     amount?: boolean
     status?: boolean
     date?: boolean
+    customer?: boolean | customersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["invoices"]>
 
   export type invoicesSelectScalar = {
@@ -4472,10 +4580,21 @@ export namespace Prisma {
   }
 
   export type invoicesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "customer_id" | "amount" | "status" | "date", ExtArgs["result"]["invoices"]>
+  export type invoicesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    customer?: boolean | customersDefaultArgs<ExtArgs>
+  }
+  export type invoicesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    customer?: boolean | customersDefaultArgs<ExtArgs>
+  }
+  export type invoicesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    customer?: boolean | customersDefaultArgs<ExtArgs>
+  }
 
   export type $invoicesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "invoices"
-    objects: {}
+    objects: {
+      customer: Prisma.$customersPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       customer_id: string
@@ -4876,6 +4995,7 @@ export namespace Prisma {
    */
   export interface Prisma__invoicesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    customer<T extends customersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, customersDefaultArgs<ExtArgs>>): Prisma__customersClient<$Result.GetResult<Prisma.$customersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4927,6 +5047,10 @@ export namespace Prisma {
      */
     omit?: invoicesOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoicesInclude<ExtArgs> | null
+    /**
      * Filter, which invoices to fetch.
      */
     where: invoicesWhereUniqueInput
@@ -4945,6 +5069,10 @@ export namespace Prisma {
      */
     omit?: invoicesOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoicesInclude<ExtArgs> | null
+    /**
      * Filter, which invoices to fetch.
      */
     where: invoicesWhereUniqueInput
@@ -4962,6 +5090,10 @@ export namespace Prisma {
      * Omit specific fields from the invoices
      */
     omit?: invoicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoicesInclude<ExtArgs> | null
     /**
      * Filter, which invoices to fetch.
      */
@@ -5011,6 +5143,10 @@ export namespace Prisma {
      */
     omit?: invoicesOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoicesInclude<ExtArgs> | null
+    /**
      * Filter, which invoices to fetch.
      */
     where?: invoicesWhereInput
@@ -5059,6 +5195,10 @@ export namespace Prisma {
      */
     omit?: invoicesOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoicesInclude<ExtArgs> | null
+    /**
      * Filter, which invoices to fetch.
      */
     where?: invoicesWhereInput
@@ -5102,6 +5242,10 @@ export namespace Prisma {
      */
     omit?: invoicesOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoicesInclude<ExtArgs> | null
+    /**
      * The data needed to create a invoices.
      */
     data: XOR<invoicesCreateInput, invoicesUncheckedCreateInput>
@@ -5135,6 +5279,10 @@ export namespace Prisma {
      */
     data: invoicesCreateManyInput | invoicesCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoicesIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -5149,6 +5297,10 @@ export namespace Prisma {
      * Omit specific fields from the invoices
      */
     omit?: invoicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoicesInclude<ExtArgs> | null
     /**
      * The data needed to update a invoices.
      */
@@ -5201,6 +5353,10 @@ export namespace Prisma {
      * Limit how many invoices to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoicesIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -5215,6 +5371,10 @@ export namespace Prisma {
      * Omit specific fields from the invoices
      */
     omit?: invoicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoicesInclude<ExtArgs> | null
     /**
      * The filter to search for the invoices to update in case it exists.
      */
@@ -5241,6 +5401,10 @@ export namespace Prisma {
      * Omit specific fields from the invoices
      */
     omit?: invoicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoicesInclude<ExtArgs> | null
     /**
      * Filter which invoices to delete.
      */
@@ -5273,6 +5437,10 @@ export namespace Prisma {
      * Omit specific fields from the invoices
      */
     omit?: invoicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoicesInclude<ExtArgs> | null
   }
 
 
@@ -6515,6 +6683,7 @@ export namespace Prisma {
     name?: StringFilter<"customers"> | string
     email?: StringFilter<"customers"> | string
     image_url?: StringFilter<"customers"> | string
+    invoices?: InvoicesListRelationFilter
   }
 
   export type customersOrderByWithRelationInput = {
@@ -6522,6 +6691,7 @@ export namespace Prisma {
     name?: SortOrder
     email?: SortOrder
     image_url?: SortOrder
+    invoices?: invoicesOrderByRelationAggregateInput
   }
 
   export type customersWhereUniqueInput = Prisma.AtLeast<{
@@ -6532,6 +6702,7 @@ export namespace Prisma {
     name?: StringFilter<"customers"> | string
     email?: StringFilter<"customers"> | string
     image_url?: StringFilter<"customers"> | string
+    invoices?: InvoicesListRelationFilter
   }, "id">
 
   export type customersOrderByWithAggregationInput = {
@@ -6563,6 +6734,7 @@ export namespace Prisma {
     amount?: IntFilter<"invoices"> | number
     status?: StringFilter<"invoices"> | string
     date?: DateTimeFilter<"invoices"> | Date | string
+    customer?: XOR<CustomersScalarRelationFilter, customersWhereInput>
   }
 
   export type invoicesOrderByWithRelationInput = {
@@ -6571,6 +6743,7 @@ export namespace Prisma {
     amount?: SortOrder
     status?: SortOrder
     date?: SortOrder
+    customer?: customersOrderByWithRelationInput
   }
 
   export type invoicesWhereUniqueInput = Prisma.AtLeast<{
@@ -6582,6 +6755,7 @@ export namespace Prisma {
     amount?: IntFilter<"invoices"> | number
     status?: StringFilter<"invoices"> | string
     date?: DateTimeFilter<"invoices"> | Date | string
+    customer?: XOR<CustomersScalarRelationFilter, customersWhereInput>
   }, "id">
 
   export type invoicesOrderByWithAggregationInput = {
@@ -6750,6 +6924,7 @@ export namespace Prisma {
     name: string
     email: string
     image_url: string
+    invoices?: invoicesCreateNestedManyWithoutCustomerInput
   }
 
   export type customersUncheckedCreateInput = {
@@ -6757,6 +6932,7 @@ export namespace Prisma {
     name: string
     email: string
     image_url: string
+    invoices?: invoicesUncheckedCreateNestedManyWithoutCustomerInput
   }
 
   export type customersUpdateInput = {
@@ -6764,6 +6940,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     image_url?: StringFieldUpdateOperationsInput | string
+    invoices?: invoicesUpdateManyWithoutCustomerNestedInput
   }
 
   export type customersUncheckedUpdateInput = {
@@ -6771,6 +6948,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     image_url?: StringFieldUpdateOperationsInput | string
+    invoices?: invoicesUncheckedUpdateManyWithoutCustomerNestedInput
   }
 
   export type customersCreateManyInput = {
@@ -6796,10 +6974,10 @@ export namespace Prisma {
 
   export type invoicesCreateInput = {
     id?: string
-    customer_id: string
     amount: number
     status: string
     date: Date | string
+    customer: customersCreateNestedOneWithoutInvoicesInput
   }
 
   export type invoicesUncheckedCreateInput = {
@@ -6812,10 +6990,10 @@ export namespace Prisma {
 
   export type invoicesUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    customer_id?: StringFieldUpdateOperationsInput | string
     amount?: IntFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    customer?: customersUpdateOneRequiredWithoutInvoicesNestedInput
   }
 
   export type invoicesUncheckedUpdateInput = {
@@ -6836,7 +7014,6 @@ export namespace Prisma {
 
   export type invoicesUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    customer_id?: StringFieldUpdateOperationsInput | string
     amount?: IntFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -7030,6 +7207,16 @@ export namespace Prisma {
     harga?: SortOrder
   }
 
+  export type InvoicesListRelationFilter = {
+    every?: invoicesWhereInput
+    some?: invoicesWhereInput
+    none?: invoicesWhereInput
+  }
+
+  export type invoicesOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type customersCountOrderByAggregateInput = {
     id?: SortOrder
     name?: SortOrder
@@ -7060,6 +7247,11 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type CustomersScalarRelationFilter = {
+    is?: customersWhereInput
+    isNot?: customersWhereInput
   }
 
   export type invoicesCountOrderByAggregateInput = {
@@ -7143,8 +7335,64 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type invoicesCreateNestedManyWithoutCustomerInput = {
+    create?: XOR<invoicesCreateWithoutCustomerInput, invoicesUncheckedCreateWithoutCustomerInput> | invoicesCreateWithoutCustomerInput[] | invoicesUncheckedCreateWithoutCustomerInput[]
+    connectOrCreate?: invoicesCreateOrConnectWithoutCustomerInput | invoicesCreateOrConnectWithoutCustomerInput[]
+    createMany?: invoicesCreateManyCustomerInputEnvelope
+    connect?: invoicesWhereUniqueInput | invoicesWhereUniqueInput[]
+  }
+
+  export type invoicesUncheckedCreateNestedManyWithoutCustomerInput = {
+    create?: XOR<invoicesCreateWithoutCustomerInput, invoicesUncheckedCreateWithoutCustomerInput> | invoicesCreateWithoutCustomerInput[] | invoicesUncheckedCreateWithoutCustomerInput[]
+    connectOrCreate?: invoicesCreateOrConnectWithoutCustomerInput | invoicesCreateOrConnectWithoutCustomerInput[]
+    createMany?: invoicesCreateManyCustomerInputEnvelope
+    connect?: invoicesWhereUniqueInput | invoicesWhereUniqueInput[]
+  }
+
+  export type invoicesUpdateManyWithoutCustomerNestedInput = {
+    create?: XOR<invoicesCreateWithoutCustomerInput, invoicesUncheckedCreateWithoutCustomerInput> | invoicesCreateWithoutCustomerInput[] | invoicesUncheckedCreateWithoutCustomerInput[]
+    connectOrCreate?: invoicesCreateOrConnectWithoutCustomerInput | invoicesCreateOrConnectWithoutCustomerInput[]
+    upsert?: invoicesUpsertWithWhereUniqueWithoutCustomerInput | invoicesUpsertWithWhereUniqueWithoutCustomerInput[]
+    createMany?: invoicesCreateManyCustomerInputEnvelope
+    set?: invoicesWhereUniqueInput | invoicesWhereUniqueInput[]
+    disconnect?: invoicesWhereUniqueInput | invoicesWhereUniqueInput[]
+    delete?: invoicesWhereUniqueInput | invoicesWhereUniqueInput[]
+    connect?: invoicesWhereUniqueInput | invoicesWhereUniqueInput[]
+    update?: invoicesUpdateWithWhereUniqueWithoutCustomerInput | invoicesUpdateWithWhereUniqueWithoutCustomerInput[]
+    updateMany?: invoicesUpdateManyWithWhereWithoutCustomerInput | invoicesUpdateManyWithWhereWithoutCustomerInput[]
+    deleteMany?: invoicesScalarWhereInput | invoicesScalarWhereInput[]
+  }
+
+  export type invoicesUncheckedUpdateManyWithoutCustomerNestedInput = {
+    create?: XOR<invoicesCreateWithoutCustomerInput, invoicesUncheckedCreateWithoutCustomerInput> | invoicesCreateWithoutCustomerInput[] | invoicesUncheckedCreateWithoutCustomerInput[]
+    connectOrCreate?: invoicesCreateOrConnectWithoutCustomerInput | invoicesCreateOrConnectWithoutCustomerInput[]
+    upsert?: invoicesUpsertWithWhereUniqueWithoutCustomerInput | invoicesUpsertWithWhereUniqueWithoutCustomerInput[]
+    createMany?: invoicesCreateManyCustomerInputEnvelope
+    set?: invoicesWhereUniqueInput | invoicesWhereUniqueInput[]
+    disconnect?: invoicesWhereUniqueInput | invoicesWhereUniqueInput[]
+    delete?: invoicesWhereUniqueInput | invoicesWhereUniqueInput[]
+    connect?: invoicesWhereUniqueInput | invoicesWhereUniqueInput[]
+    update?: invoicesUpdateWithWhereUniqueWithoutCustomerInput | invoicesUpdateWithWhereUniqueWithoutCustomerInput[]
+    updateMany?: invoicesUpdateManyWithWhereWithoutCustomerInput | invoicesUpdateManyWithWhereWithoutCustomerInput[]
+    deleteMany?: invoicesScalarWhereInput | invoicesScalarWhereInput[]
+  }
+
+  export type customersCreateNestedOneWithoutInvoicesInput = {
+    create?: XOR<customersCreateWithoutInvoicesInput, customersUncheckedCreateWithoutInvoicesInput>
+    connectOrCreate?: customersCreateOrConnectWithoutInvoicesInput
+    connect?: customersWhereUniqueInput
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type customersUpdateOneRequiredWithoutInvoicesNestedInput = {
+    create?: XOR<customersCreateWithoutInvoicesInput, customersUncheckedCreateWithoutInvoicesInput>
+    connectOrCreate?: customersCreateOrConnectWithoutInvoicesInput
+    upsert?: customersUpsertWithoutInvoicesInput
+    connect?: customersWhereUniqueInput
+    update?: XOR<XOR<customersUpdateToOneWithWhereWithoutInvoicesInput, customersUpdateWithoutInvoicesInput>, customersUncheckedUpdateWithoutInvoicesInput>
   }
 
   export type NestedUuidFilter<$PrismaModel = never> = {
@@ -7264,6 +7512,129 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type invoicesCreateWithoutCustomerInput = {
+    id?: string
+    amount: number
+    status: string
+    date: Date | string
+  }
+
+  export type invoicesUncheckedCreateWithoutCustomerInput = {
+    id?: string
+    amount: number
+    status: string
+    date: Date | string
+  }
+
+  export type invoicesCreateOrConnectWithoutCustomerInput = {
+    where: invoicesWhereUniqueInput
+    create: XOR<invoicesCreateWithoutCustomerInput, invoicesUncheckedCreateWithoutCustomerInput>
+  }
+
+  export type invoicesCreateManyCustomerInputEnvelope = {
+    data: invoicesCreateManyCustomerInput | invoicesCreateManyCustomerInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type invoicesUpsertWithWhereUniqueWithoutCustomerInput = {
+    where: invoicesWhereUniqueInput
+    update: XOR<invoicesUpdateWithoutCustomerInput, invoicesUncheckedUpdateWithoutCustomerInput>
+    create: XOR<invoicesCreateWithoutCustomerInput, invoicesUncheckedCreateWithoutCustomerInput>
+  }
+
+  export type invoicesUpdateWithWhereUniqueWithoutCustomerInput = {
+    where: invoicesWhereUniqueInput
+    data: XOR<invoicesUpdateWithoutCustomerInput, invoicesUncheckedUpdateWithoutCustomerInput>
+  }
+
+  export type invoicesUpdateManyWithWhereWithoutCustomerInput = {
+    where: invoicesScalarWhereInput
+    data: XOR<invoicesUpdateManyMutationInput, invoicesUncheckedUpdateManyWithoutCustomerInput>
+  }
+
+  export type invoicesScalarWhereInput = {
+    AND?: invoicesScalarWhereInput | invoicesScalarWhereInput[]
+    OR?: invoicesScalarWhereInput[]
+    NOT?: invoicesScalarWhereInput | invoicesScalarWhereInput[]
+    id?: UuidFilter<"invoices"> | string
+    customer_id?: UuidFilter<"invoices"> | string
+    amount?: IntFilter<"invoices"> | number
+    status?: StringFilter<"invoices"> | string
+    date?: DateTimeFilter<"invoices"> | Date | string
+  }
+
+  export type customersCreateWithoutInvoicesInput = {
+    id?: string
+    name: string
+    email: string
+    image_url: string
+  }
+
+  export type customersUncheckedCreateWithoutInvoicesInput = {
+    id?: string
+    name: string
+    email: string
+    image_url: string
+  }
+
+  export type customersCreateOrConnectWithoutInvoicesInput = {
+    where: customersWhereUniqueInput
+    create: XOR<customersCreateWithoutInvoicesInput, customersUncheckedCreateWithoutInvoicesInput>
+  }
+
+  export type customersUpsertWithoutInvoicesInput = {
+    update: XOR<customersUpdateWithoutInvoicesInput, customersUncheckedUpdateWithoutInvoicesInput>
+    create: XOR<customersCreateWithoutInvoicesInput, customersUncheckedCreateWithoutInvoicesInput>
+    where?: customersWhereInput
+  }
+
+  export type customersUpdateToOneWithWhereWithoutInvoicesInput = {
+    where?: customersWhereInput
+    data: XOR<customersUpdateWithoutInvoicesInput, customersUncheckedUpdateWithoutInvoicesInput>
+  }
+
+  export type customersUpdateWithoutInvoicesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    image_url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type customersUncheckedUpdateWithoutInvoicesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    image_url?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type invoicesCreateManyCustomerInput = {
+    id?: string
+    amount: number
+    status: string
+    date: Date | string
+  }
+
+  export type invoicesUpdateWithoutCustomerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type invoicesUncheckedUpdateWithoutCustomerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type invoicesUncheckedUpdateManyWithoutCustomerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    amount?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
