@@ -120,11 +120,18 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.ProductsScalarFieldEnum = {
+exports.Prisma.MostProductsScalarFieldEnum = {
   id_product: 'id_product',
   nama_produk: 'nama_produk',
   harga: 'harga',
   total_beli: 'total_beli'
+};
+
+exports.Prisma.ProductsScalarFieldEnum = {
+  id_product: 'id_product',
+  nama_produk: 'nama_produk',
+  harga: 'harga',
+  image_url: 'image_url'
 };
 
 exports.Prisma.CustomersScalarFieldEnum = {
@@ -157,13 +164,9 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
-};
-
 
 exports.Prisma.ModelName = {
+  MostProducts: 'MostProducts',
   Products: 'Products',
   customers: 'customers',
   invoices: 'invoices',

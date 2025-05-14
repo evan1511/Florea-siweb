@@ -14,21 +14,17 @@ model MostProducts {
   harga       Int
   total_beli  String @db.VarChar(255)
 
-  product     Products @relation(fields: [id_product], references: [id_product])
-
+  product Products @relation(fields: [id_product], references: [id_product])
 }
-
 
 model Products {
-  id_product  String         @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
-  nama_produk String         @db.VarChar(255)
+  id_product  String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  nama_produk String @db.VarChar(255)
   harga       Int
-  image_url   String         @db.VarChar(255)
+  image_url   String @db.VarChar(255)
 
-  mostProducts MostProducts[] 
+  mostProducts MostProducts[]
 }
-
-
 
 model customers {
   id        String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid

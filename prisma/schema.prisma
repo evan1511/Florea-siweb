@@ -5,7 +5,8 @@ generator client {
 
 datasource db {
   provider = "postgresql"
-  url      = env("DATABASE_URL")}
+  url      = env("DATABASE_URL")
+}
 
 model MostProducts {
   id_product  String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
@@ -24,7 +25,7 @@ model Products {
   harga       Int
   image_url   String         @db.VarChar(255)
 
-  mostProducts MostProducts[] // relasi balik (array)
+  mostProducts MostProducts[] 
 }
 
 
