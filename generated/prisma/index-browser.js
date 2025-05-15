@@ -124,7 +124,7 @@ exports.Prisma.MostProductsScalarFieldEnum = {
   id_product: 'id_product',
   nama_produk: 'nama_produk',
   harga: 'harga',
-  total_beli: 'total_beli'
+  jumlah_beli: 'jumlah_beli'
 };
 
 exports.Prisma.ProductsScalarFieldEnum = {
@@ -143,8 +143,11 @@ exports.Prisma.CustomersScalarFieldEnum = {
 
 exports.Prisma.InvoicesScalarFieldEnum = {
   id: 'id',
+  id_product: 'id_product',
   customer_id: 'customer_id',
-  amount: 'amount',
+  nama_produk: 'nama_produk',
+  harga: 'harga',
+  jumlah_beli: 'jumlah_beli',
   status: 'status',
   date: 'date'
 };

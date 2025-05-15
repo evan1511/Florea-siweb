@@ -1233,11 +1233,13 @@ export namespace Prisma {
    */
 
   export type ProductsCountOutputType = {
-    mostProducts: number
+    MostProducts: number
+    invoices: number
   }
 
   export type ProductsCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    mostProducts?: boolean | ProductsCountOutputTypeCountMostProductsArgs
+    MostProducts?: boolean | ProductsCountOutputTypeCountMostProductsArgs
+    invoices?: boolean | ProductsCountOutputTypeCountInvoicesArgs
   }
 
   // Custom InputTypes
@@ -1256,6 +1258,13 @@ export namespace Prisma {
    */
   export type ProductsCountOutputTypeCountMostProductsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: MostProductsWhereInput
+  }
+
+  /**
+   * ProductsCountOutputType without action
+   */
+  export type ProductsCountOutputTypeCountInvoicesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: invoicesWhereInput
   }
 
 
@@ -1308,62 +1317,66 @@ export namespace Prisma {
 
   export type MostProductsAvgAggregateOutputType = {
     harga: number | null
+    jumlah_beli: number | null
   }
 
   export type MostProductsSumAggregateOutputType = {
     harga: number | null
+    jumlah_beli: number | null
   }
 
   export type MostProductsMinAggregateOutputType = {
     id_product: string | null
     nama_produk: string | null
     harga: number | null
-    total_beli: string | null
+    jumlah_beli: number | null
   }
 
   export type MostProductsMaxAggregateOutputType = {
     id_product: string | null
     nama_produk: string | null
     harga: number | null
-    total_beli: string | null
+    jumlah_beli: number | null
   }
 
   export type MostProductsCountAggregateOutputType = {
     id_product: number
     nama_produk: number
     harga: number
-    total_beli: number
+    jumlah_beli: number
     _all: number
   }
 
 
   export type MostProductsAvgAggregateInputType = {
     harga?: true
+    jumlah_beli?: true
   }
 
   export type MostProductsSumAggregateInputType = {
     harga?: true
+    jumlah_beli?: true
   }
 
   export type MostProductsMinAggregateInputType = {
     id_product?: true
     nama_produk?: true
     harga?: true
-    total_beli?: true
+    jumlah_beli?: true
   }
 
   export type MostProductsMaxAggregateInputType = {
     id_product?: true
     nama_produk?: true
     harga?: true
-    total_beli?: true
+    jumlah_beli?: true
   }
 
   export type MostProductsCountAggregateInputType = {
     id_product?: true
     nama_produk?: true
     harga?: true
-    total_beli?: true
+    jumlah_beli?: true
     _all?: true
   }
 
@@ -1457,7 +1470,7 @@ export namespace Prisma {
     id_product: string
     nama_produk: string
     harga: number
-    total_beli: string
+    jumlah_beli: number
     _count: MostProductsCountAggregateOutputType | null
     _avg: MostProductsAvgAggregateOutputType | null
     _sum: MostProductsSumAggregateOutputType | null
@@ -1483,7 +1496,7 @@ export namespace Prisma {
     id_product?: boolean
     nama_produk?: boolean
     harga?: boolean
-    total_beli?: boolean
+    jumlah_beli?: boolean
     product?: boolean | ProductsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["mostProducts"]>
 
@@ -1491,7 +1504,7 @@ export namespace Prisma {
     id_product?: boolean
     nama_produk?: boolean
     harga?: boolean
-    total_beli?: boolean
+    jumlah_beli?: boolean
     product?: boolean | ProductsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["mostProducts"]>
 
@@ -1499,7 +1512,7 @@ export namespace Prisma {
     id_product?: boolean
     nama_produk?: boolean
     harga?: boolean
-    total_beli?: boolean
+    jumlah_beli?: boolean
     product?: boolean | ProductsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["mostProducts"]>
 
@@ -1507,10 +1520,10 @@ export namespace Prisma {
     id_product?: boolean
     nama_produk?: boolean
     harga?: boolean
-    total_beli?: boolean
+    jumlah_beli?: boolean
   }
 
-  export type MostProductsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_product" | "nama_produk" | "harga" | "total_beli", ExtArgs["result"]["mostProducts"]>
+  export type MostProductsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_product" | "nama_produk" | "harga" | "jumlah_beli", ExtArgs["result"]["mostProducts"]>
   export type MostProductsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     product?: boolean | ProductsDefaultArgs<ExtArgs>
   }
@@ -1530,7 +1543,7 @@ export namespace Prisma {
       id_product: string
       nama_produk: string
       harga: number
-      total_beli: string
+      jumlah_beli: number
     }, ExtArgs["result"]["mostProducts"]>
     composites: {}
   }
@@ -1958,7 +1971,7 @@ export namespace Prisma {
     readonly id_product: FieldRef<"MostProducts", 'String'>
     readonly nama_produk: FieldRef<"MostProducts", 'String'>
     readonly harga: FieldRef<"MostProducts", 'Int'>
-    readonly total_beli: FieldRef<"MostProducts", 'String'>
+    readonly jumlah_beli: FieldRef<"MostProducts", 'Int'>
   }
     
 
@@ -2563,7 +2576,8 @@ export namespace Prisma {
     nama_produk?: boolean
     harga?: boolean
     image_url?: boolean
-    mostProducts?: boolean | Products$mostProductsArgs<ExtArgs>
+    MostProducts?: boolean | Products$MostProductsArgs<ExtArgs>
+    invoices?: boolean | Products$invoicesArgs<ExtArgs>
     _count?: boolean | ProductsCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["products"]>
 
@@ -2590,7 +2604,8 @@ export namespace Prisma {
 
   export type ProductsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id_product" | "nama_produk" | "harga" | "image_url", ExtArgs["result"]["products"]>
   export type ProductsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    mostProducts?: boolean | Products$mostProductsArgs<ExtArgs>
+    MostProducts?: boolean | Products$MostProductsArgs<ExtArgs>
+    invoices?: boolean | Products$invoicesArgs<ExtArgs>
     _count?: boolean | ProductsCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProductsIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -2599,7 +2614,8 @@ export namespace Prisma {
   export type $ProductsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Products"
     objects: {
-      mostProducts: Prisma.$MostProductsPayload<ExtArgs>[]
+      MostProducts: Prisma.$MostProductsPayload<ExtArgs>[]
+      invoices: Prisma.$invoicesPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id_product: string
@@ -3000,7 +3016,8 @@ export namespace Prisma {
    */
   export interface Prisma__ProductsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    mostProducts<T extends Products$mostProductsArgs<ExtArgs> = {}>(args?: Subset<T, Products$mostProductsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MostProductsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    MostProducts<T extends Products$MostProductsArgs<ExtArgs> = {}>(args?: Subset<T, Products$MostProductsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MostProductsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    invoices<T extends Products$invoicesArgs<ExtArgs> = {}>(args?: Subset<T, Products$invoicesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$invoicesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3422,9 +3439,9 @@ export namespace Prisma {
   }
 
   /**
-   * Products.mostProducts
+   * Products.MostProducts
    */
-  export type Products$mostProductsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Products$MostProductsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the MostProducts
      */
@@ -3443,6 +3460,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: MostProductsScalarFieldEnum | MostProductsScalarFieldEnum[]
+  }
+
+  /**
+   * Products.invoices
+   */
+  export type Products$invoicesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the invoices
+     */
+    select?: invoicesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the invoices
+     */
+    omit?: invoicesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoicesInclude<ExtArgs> | null
+    where?: invoicesWhereInput
+    orderBy?: invoicesOrderByWithRelationInput | invoicesOrderByWithRelationInput[]
+    cursor?: invoicesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InvoicesScalarFieldEnum | InvoicesScalarFieldEnum[]
   }
 
   /**
@@ -4534,33 +4575,44 @@ export namespace Prisma {
   }
 
   export type InvoicesAvgAggregateOutputType = {
-    amount: number | null
+    harga: number | null
+    jumlah_beli: number | null
   }
 
   export type InvoicesSumAggregateOutputType = {
-    amount: number | null
+    harga: number | null
+    jumlah_beli: number | null
   }
 
   export type InvoicesMinAggregateOutputType = {
     id: string | null
+    id_product: string | null
     customer_id: string | null
-    amount: number | null
+    nama_produk: string | null
+    harga: number | null
+    jumlah_beli: number | null
     status: string | null
     date: Date | null
   }
 
   export type InvoicesMaxAggregateOutputType = {
     id: string | null
+    id_product: string | null
     customer_id: string | null
-    amount: number | null
+    nama_produk: string | null
+    harga: number | null
+    jumlah_beli: number | null
     status: string | null
     date: Date | null
   }
 
   export type InvoicesCountAggregateOutputType = {
     id: number
+    id_product: number
     customer_id: number
-    amount: number
+    nama_produk: number
+    harga: number
+    jumlah_beli: number
     status: number
     date: number
     _all: number
@@ -4568,33 +4620,44 @@ export namespace Prisma {
 
 
   export type InvoicesAvgAggregateInputType = {
-    amount?: true
+    harga?: true
+    jumlah_beli?: true
   }
 
   export type InvoicesSumAggregateInputType = {
-    amount?: true
+    harga?: true
+    jumlah_beli?: true
   }
 
   export type InvoicesMinAggregateInputType = {
     id?: true
+    id_product?: true
     customer_id?: true
-    amount?: true
+    nama_produk?: true
+    harga?: true
+    jumlah_beli?: true
     status?: true
     date?: true
   }
 
   export type InvoicesMaxAggregateInputType = {
     id?: true
+    id_product?: true
     customer_id?: true
-    amount?: true
+    nama_produk?: true
+    harga?: true
+    jumlah_beli?: true
     status?: true
     date?: true
   }
 
   export type InvoicesCountAggregateInputType = {
     id?: true
+    id_product?: true
     customer_id?: true
-    amount?: true
+    nama_produk?: true
+    harga?: true
+    jumlah_beli?: true
     status?: true
     date?: true
     _all?: true
@@ -4688,8 +4751,11 @@ export namespace Prisma {
 
   export type InvoicesGroupByOutputType = {
     id: string
+    id_product: string
     customer_id: string
-    amount: number
+    nama_produk: string
+    harga: number
+    jumlah_beli: number
     status: string
     date: Date
     _count: InvoicesCountAggregateOutputType | null
@@ -4715,59 +4781,81 @@ export namespace Prisma {
 
   export type invoicesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    id_product?: boolean
     customer_id?: boolean
-    amount?: boolean
+    nama_produk?: boolean
+    harga?: boolean
+    jumlah_beli?: boolean
     status?: boolean
     date?: boolean
     customer?: boolean | customersDefaultArgs<ExtArgs>
+    product?: boolean | ProductsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["invoices"]>
 
   export type invoicesSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    id_product?: boolean
     customer_id?: boolean
-    amount?: boolean
+    nama_produk?: boolean
+    harga?: boolean
+    jumlah_beli?: boolean
     status?: boolean
     date?: boolean
     customer?: boolean | customersDefaultArgs<ExtArgs>
+    product?: boolean | ProductsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["invoices"]>
 
   export type invoicesSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    id_product?: boolean
     customer_id?: boolean
-    amount?: boolean
+    nama_produk?: boolean
+    harga?: boolean
+    jumlah_beli?: boolean
     status?: boolean
     date?: boolean
     customer?: boolean | customersDefaultArgs<ExtArgs>
+    product?: boolean | ProductsDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["invoices"]>
 
   export type invoicesSelectScalar = {
     id?: boolean
+    id_product?: boolean
     customer_id?: boolean
-    amount?: boolean
+    nama_produk?: boolean
+    harga?: boolean
+    jumlah_beli?: boolean
     status?: boolean
     date?: boolean
   }
 
-  export type invoicesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "customer_id" | "amount" | "status" | "date", ExtArgs["result"]["invoices"]>
+  export type invoicesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "id_product" | "customer_id" | "nama_produk" | "harga" | "jumlah_beli" | "status" | "date", ExtArgs["result"]["invoices"]>
   export type invoicesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     customer?: boolean | customersDefaultArgs<ExtArgs>
+    product?: boolean | ProductsDefaultArgs<ExtArgs>
   }
   export type invoicesIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     customer?: boolean | customersDefaultArgs<ExtArgs>
+    product?: boolean | ProductsDefaultArgs<ExtArgs>
   }
   export type invoicesIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     customer?: boolean | customersDefaultArgs<ExtArgs>
+    product?: boolean | ProductsDefaultArgs<ExtArgs>
   }
 
   export type $invoicesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "invoices"
     objects: {
       customer: Prisma.$customersPayload<ExtArgs>
+      product: Prisma.$ProductsPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      id_product: string
       customer_id: string
-      amount: number
+      nama_produk: string
+      harga: number
+      jumlah_beli: number
       status: string
       date: Date
     }, ExtArgs["result"]["invoices"]>
@@ -5165,6 +5253,7 @@ export namespace Prisma {
   export interface Prisma__invoicesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     customer<T extends customersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, customersDefaultArgs<ExtArgs>>): Prisma__customersClient<$Result.GetResult<Prisma.$customersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    product<T extends ProductsDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProductsDefaultArgs<ExtArgs>>): Prisma__ProductsClient<$Result.GetResult<Prisma.$ProductsPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5195,8 +5284,11 @@ export namespace Prisma {
    */
   interface invoicesFieldRefs {
     readonly id: FieldRef<"invoices", 'String'>
+    readonly id_product: FieldRef<"invoices", 'String'>
     readonly customer_id: FieldRef<"invoices", 'String'>
-    readonly amount: FieldRef<"invoices", 'Int'>
+    readonly nama_produk: FieldRef<"invoices", 'String'>
+    readonly harga: FieldRef<"invoices", 'Int'>
+    readonly jumlah_beli: FieldRef<"invoices", 'Int'>
     readonly status: FieldRef<"invoices", 'String'>
     readonly date: FieldRef<"invoices", 'DateTime'>
   }
@@ -6621,7 +6713,7 @@ export namespace Prisma {
     id_product: 'id_product',
     nama_produk: 'nama_produk',
     harga: 'harga',
-    total_beli: 'total_beli'
+    jumlah_beli: 'jumlah_beli'
   };
 
   export type MostProductsScalarFieldEnum = (typeof MostProductsScalarFieldEnum)[keyof typeof MostProductsScalarFieldEnum]
@@ -6649,8 +6741,11 @@ export namespace Prisma {
 
   export const InvoicesScalarFieldEnum: {
     id: 'id',
+    id_product: 'id_product',
     customer_id: 'customer_id',
-    amount: 'amount',
+    nama_produk: 'nama_produk',
+    harga: 'harga',
+    jumlah_beli: 'jumlah_beli',
     status: 'status',
     date: 'date'
   };
@@ -6753,7 +6848,7 @@ export namespace Prisma {
     id_product?: UuidFilter<"MostProducts"> | string
     nama_produk?: StringFilter<"MostProducts"> | string
     harga?: IntFilter<"MostProducts"> | number
-    total_beli?: StringFilter<"MostProducts"> | string
+    jumlah_beli?: IntFilter<"MostProducts"> | number
     product?: XOR<ProductsScalarRelationFilter, ProductsWhereInput>
   }
 
@@ -6761,7 +6856,7 @@ export namespace Prisma {
     id_product?: SortOrder
     nama_produk?: SortOrder
     harga?: SortOrder
-    total_beli?: SortOrder
+    jumlah_beli?: SortOrder
     product?: ProductsOrderByWithRelationInput
   }
 
@@ -6772,7 +6867,7 @@ export namespace Prisma {
     NOT?: MostProductsWhereInput | MostProductsWhereInput[]
     nama_produk?: StringFilter<"MostProducts"> | string
     harga?: IntFilter<"MostProducts"> | number
-    total_beli?: StringFilter<"MostProducts"> | string
+    jumlah_beli?: IntFilter<"MostProducts"> | number
     product?: XOR<ProductsScalarRelationFilter, ProductsWhereInput>
   }, "id_product">
 
@@ -6780,7 +6875,7 @@ export namespace Prisma {
     id_product?: SortOrder
     nama_produk?: SortOrder
     harga?: SortOrder
-    total_beli?: SortOrder
+    jumlah_beli?: SortOrder
     _count?: MostProductsCountOrderByAggregateInput
     _avg?: MostProductsAvgOrderByAggregateInput
     _max?: MostProductsMaxOrderByAggregateInput
@@ -6795,7 +6890,7 @@ export namespace Prisma {
     id_product?: UuidWithAggregatesFilter<"MostProducts"> | string
     nama_produk?: StringWithAggregatesFilter<"MostProducts"> | string
     harga?: IntWithAggregatesFilter<"MostProducts"> | number
-    total_beli?: StringWithAggregatesFilter<"MostProducts"> | string
+    jumlah_beli?: IntWithAggregatesFilter<"MostProducts"> | number
   }
 
   export type ProductsWhereInput = {
@@ -6806,7 +6901,8 @@ export namespace Prisma {
     nama_produk?: StringFilter<"Products"> | string
     harga?: IntFilter<"Products"> | number
     image_url?: StringFilter<"Products"> | string
-    mostProducts?: MostProductsListRelationFilter
+    MostProducts?: MostProductsListRelationFilter
+    invoices?: InvoicesListRelationFilter
   }
 
   export type ProductsOrderByWithRelationInput = {
@@ -6814,7 +6910,8 @@ export namespace Prisma {
     nama_produk?: SortOrder
     harga?: SortOrder
     image_url?: SortOrder
-    mostProducts?: MostProductsOrderByRelationAggregateInput
+    MostProducts?: MostProductsOrderByRelationAggregateInput
+    invoices?: invoicesOrderByRelationAggregateInput
   }
 
   export type ProductsWhereUniqueInput = Prisma.AtLeast<{
@@ -6825,7 +6922,8 @@ export namespace Prisma {
     nama_produk?: StringFilter<"Products"> | string
     harga?: IntFilter<"Products"> | number
     image_url?: StringFilter<"Products"> | string
-    mostProducts?: MostProductsListRelationFilter
+    MostProducts?: MostProductsListRelationFilter
+    invoices?: InvoicesListRelationFilter
   }, "id_product">
 
   export type ProductsOrderByWithAggregationInput = {
@@ -6905,20 +7003,28 @@ export namespace Prisma {
     OR?: invoicesWhereInput[]
     NOT?: invoicesWhereInput | invoicesWhereInput[]
     id?: UuidFilter<"invoices"> | string
+    id_product?: UuidFilter<"invoices"> | string
     customer_id?: UuidFilter<"invoices"> | string
-    amount?: IntFilter<"invoices"> | number
+    nama_produk?: StringFilter<"invoices"> | string
+    harga?: IntFilter<"invoices"> | number
+    jumlah_beli?: IntFilter<"invoices"> | number
     status?: StringFilter<"invoices"> | string
     date?: DateTimeFilter<"invoices"> | Date | string
     customer?: XOR<CustomersScalarRelationFilter, customersWhereInput>
+    product?: XOR<ProductsScalarRelationFilter, ProductsWhereInput>
   }
 
   export type invoicesOrderByWithRelationInput = {
     id?: SortOrder
+    id_product?: SortOrder
     customer_id?: SortOrder
-    amount?: SortOrder
+    nama_produk?: SortOrder
+    harga?: SortOrder
+    jumlah_beli?: SortOrder
     status?: SortOrder
     date?: SortOrder
     customer?: customersOrderByWithRelationInput
+    product?: ProductsOrderByWithRelationInput
   }
 
   export type invoicesWhereUniqueInput = Prisma.AtLeast<{
@@ -6926,17 +7032,24 @@ export namespace Prisma {
     AND?: invoicesWhereInput | invoicesWhereInput[]
     OR?: invoicesWhereInput[]
     NOT?: invoicesWhereInput | invoicesWhereInput[]
+    id_product?: UuidFilter<"invoices"> | string
     customer_id?: UuidFilter<"invoices"> | string
-    amount?: IntFilter<"invoices"> | number
+    nama_produk?: StringFilter<"invoices"> | string
+    harga?: IntFilter<"invoices"> | number
+    jumlah_beli?: IntFilter<"invoices"> | number
     status?: StringFilter<"invoices"> | string
     date?: DateTimeFilter<"invoices"> | Date | string
     customer?: XOR<CustomersScalarRelationFilter, customersWhereInput>
+    product?: XOR<ProductsScalarRelationFilter, ProductsWhereInput>
   }, "id">
 
   export type invoicesOrderByWithAggregationInput = {
     id?: SortOrder
+    id_product?: SortOrder
     customer_id?: SortOrder
-    amount?: SortOrder
+    nama_produk?: SortOrder
+    harga?: SortOrder
+    jumlah_beli?: SortOrder
     status?: SortOrder
     date?: SortOrder
     _count?: invoicesCountOrderByAggregateInput
@@ -6951,8 +7064,11 @@ export namespace Prisma {
     OR?: invoicesScalarWhereWithAggregatesInput[]
     NOT?: invoicesScalarWhereWithAggregatesInput | invoicesScalarWhereWithAggregatesInput[]
     id?: UuidWithAggregatesFilter<"invoices"> | string
+    id_product?: UuidWithAggregatesFilter<"invoices"> | string
     customer_id?: UuidWithAggregatesFilter<"invoices"> | string
-    amount?: IntWithAggregatesFilter<"invoices"> | number
+    nama_produk?: StringWithAggregatesFilter<"invoices"> | string
+    harga?: IntWithAggregatesFilter<"invoices"> | number
+    jumlah_beli?: IntWithAggregatesFilter<"invoices"> | number
     status?: StringWithAggregatesFilter<"invoices"> | string
     date?: DateTimeWithAggregatesFilter<"invoices"> | Date | string
   }
@@ -6999,7 +7115,7 @@ export namespace Prisma {
   export type MostProductsCreateInput = {
     nama_produk: string
     harga: number
-    total_beli: string
+    jumlah_beli: number
     product?: ProductsCreateNestedOneWithoutMostProductsInput
   }
 
@@ -7007,13 +7123,13 @@ export namespace Prisma {
     id_product?: string
     nama_produk: string
     harga: number
-    total_beli: string
+    jumlah_beli: number
   }
 
   export type MostProductsUpdateInput = {
     nama_produk?: StringFieldUpdateOperationsInput | string
     harga?: IntFieldUpdateOperationsInput | number
-    total_beli?: StringFieldUpdateOperationsInput | string
+    jumlah_beli?: IntFieldUpdateOperationsInput | number
     product?: ProductsUpdateOneRequiredWithoutMostProductsNestedInput
   }
 
@@ -7021,27 +7137,27 @@ export namespace Prisma {
     id_product?: StringFieldUpdateOperationsInput | string
     nama_produk?: StringFieldUpdateOperationsInput | string
     harga?: IntFieldUpdateOperationsInput | number
-    total_beli?: StringFieldUpdateOperationsInput | string
+    jumlah_beli?: IntFieldUpdateOperationsInput | number
   }
 
   export type MostProductsCreateManyInput = {
     id_product?: string
     nama_produk: string
     harga: number
-    total_beli: string
+    jumlah_beli: number
   }
 
   export type MostProductsUpdateManyMutationInput = {
     nama_produk?: StringFieldUpdateOperationsInput | string
     harga?: IntFieldUpdateOperationsInput | number
-    total_beli?: StringFieldUpdateOperationsInput | string
+    jumlah_beli?: IntFieldUpdateOperationsInput | number
   }
 
   export type MostProductsUncheckedUpdateManyInput = {
     id_product?: StringFieldUpdateOperationsInput | string
     nama_produk?: StringFieldUpdateOperationsInput | string
     harga?: IntFieldUpdateOperationsInput | number
-    total_beli?: StringFieldUpdateOperationsInput | string
+    jumlah_beli?: IntFieldUpdateOperationsInput | number
   }
 
   export type ProductsCreateInput = {
@@ -7049,7 +7165,8 @@ export namespace Prisma {
     nama_produk: string
     harga: number
     image_url: string
-    mostProducts?: MostProductsCreateNestedManyWithoutProductInput
+    MostProducts?: MostProductsCreateNestedManyWithoutProductInput
+    invoices?: invoicesCreateNestedManyWithoutProductInput
   }
 
   export type ProductsUncheckedCreateInput = {
@@ -7057,7 +7174,8 @@ export namespace Prisma {
     nama_produk: string
     harga: number
     image_url: string
-    mostProducts?: MostProductsUncheckedCreateNestedManyWithoutProductInput
+    MostProducts?: MostProductsUncheckedCreateNestedManyWithoutProductInput
+    invoices?: invoicesUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductsUpdateInput = {
@@ -7065,7 +7183,8 @@ export namespace Prisma {
     nama_produk?: StringFieldUpdateOperationsInput | string
     harga?: IntFieldUpdateOperationsInput | number
     image_url?: StringFieldUpdateOperationsInput | string
-    mostProducts?: MostProductsUpdateManyWithoutProductNestedInput
+    MostProducts?: MostProductsUpdateManyWithoutProductNestedInput
+    invoices?: invoicesUpdateManyWithoutProductNestedInput
   }
 
   export type ProductsUncheckedUpdateInput = {
@@ -7073,7 +7192,8 @@ export namespace Prisma {
     nama_produk?: StringFieldUpdateOperationsInput | string
     harga?: IntFieldUpdateOperationsInput | number
     image_url?: StringFieldUpdateOperationsInput | string
-    mostProducts?: MostProductsUncheckedUpdateManyWithoutProductNestedInput
+    MostProducts?: MostProductsUncheckedUpdateManyWithoutProductNestedInput
+    invoices?: invoicesUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductsCreateManyInput = {
@@ -7152,55 +7272,75 @@ export namespace Prisma {
 
   export type invoicesCreateInput = {
     id?: string
-    amount: number
+    nama_produk: string
+    harga: number
+    jumlah_beli: number
     status: string
     date: Date | string
     customer: customersCreateNestedOneWithoutInvoicesInput
+    product: ProductsCreateNestedOneWithoutInvoicesInput
   }
 
   export type invoicesUncheckedCreateInput = {
     id?: string
+    id_product: string
     customer_id: string
-    amount: number
+    nama_produk: string
+    harga: number
+    jumlah_beli: number
     status: string
     date: Date | string
   }
 
   export type invoicesUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
+    nama_produk?: StringFieldUpdateOperationsInput | string
+    harga?: IntFieldUpdateOperationsInput | number
+    jumlah_beli?: IntFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     customer?: customersUpdateOneRequiredWithoutInvoicesNestedInput
+    product?: ProductsUpdateOneRequiredWithoutInvoicesNestedInput
   }
 
   export type invoicesUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    id_product?: StringFieldUpdateOperationsInput | string
     customer_id?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
+    nama_produk?: StringFieldUpdateOperationsInput | string
+    harga?: IntFieldUpdateOperationsInput | number
+    jumlah_beli?: IntFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type invoicesCreateManyInput = {
     id?: string
+    id_product: string
     customer_id: string
-    amount: number
+    nama_produk: string
+    harga: number
+    jumlah_beli: number
     status: string
     date: Date | string
   }
 
   export type invoicesUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
+    nama_produk?: StringFieldUpdateOperationsInput | string
+    harga?: IntFieldUpdateOperationsInput | number
+    jumlah_beli?: IntFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type invoicesUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    id_product?: StringFieldUpdateOperationsInput | string
     customer_id?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
+    nama_produk?: StringFieldUpdateOperationsInput | string
+    harga?: IntFieldUpdateOperationsInput | number
+    jumlah_beli?: IntFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7287,29 +7427,31 @@ export namespace Prisma {
     id_product?: SortOrder
     nama_produk?: SortOrder
     harga?: SortOrder
-    total_beli?: SortOrder
+    jumlah_beli?: SortOrder
   }
 
   export type MostProductsAvgOrderByAggregateInput = {
     harga?: SortOrder
+    jumlah_beli?: SortOrder
   }
 
   export type MostProductsMaxOrderByAggregateInput = {
     id_product?: SortOrder
     nama_produk?: SortOrder
     harga?: SortOrder
-    total_beli?: SortOrder
+    jumlah_beli?: SortOrder
   }
 
   export type MostProductsMinOrderByAggregateInput = {
     id_product?: SortOrder
     nama_produk?: SortOrder
     harga?: SortOrder
-    total_beli?: SortOrder
+    jumlah_beli?: SortOrder
   }
 
   export type MostProductsSumOrderByAggregateInput = {
     harga?: SortOrder
+    jumlah_beli?: SortOrder
   }
 
   export type UuidWithAggregatesFilter<$PrismaModel = never> = {
@@ -7367,7 +7509,17 @@ export namespace Prisma {
     none?: MostProductsWhereInput
   }
 
+  export type InvoicesListRelationFilter = {
+    every?: invoicesWhereInput
+    some?: invoicesWhereInput
+    none?: invoicesWhereInput
+  }
+
   export type MostProductsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type invoicesOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -7398,16 +7550,6 @@ export namespace Prisma {
 
   export type ProductsSumOrderByAggregateInput = {
     harga?: SortOrder
-  }
-
-  export type InvoicesListRelationFilter = {
-    every?: invoicesWhereInput
-    some?: invoicesWhereInput
-    none?: invoicesWhereInput
-  }
-
-  export type invoicesOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type customersCountOrderByAggregateInput = {
@@ -7449,34 +7591,45 @@ export namespace Prisma {
 
   export type invoicesCountOrderByAggregateInput = {
     id?: SortOrder
+    id_product?: SortOrder
     customer_id?: SortOrder
-    amount?: SortOrder
+    nama_produk?: SortOrder
+    harga?: SortOrder
+    jumlah_beli?: SortOrder
     status?: SortOrder
     date?: SortOrder
   }
 
   export type invoicesAvgOrderByAggregateInput = {
-    amount?: SortOrder
+    harga?: SortOrder
+    jumlah_beli?: SortOrder
   }
 
   export type invoicesMaxOrderByAggregateInput = {
     id?: SortOrder
+    id_product?: SortOrder
     customer_id?: SortOrder
-    amount?: SortOrder
+    nama_produk?: SortOrder
+    harga?: SortOrder
+    jumlah_beli?: SortOrder
     status?: SortOrder
     date?: SortOrder
   }
 
   export type invoicesMinOrderByAggregateInput = {
     id?: SortOrder
+    id_product?: SortOrder
     customer_id?: SortOrder
-    amount?: SortOrder
+    nama_produk?: SortOrder
+    harga?: SortOrder
+    jumlah_beli?: SortOrder
     status?: SortOrder
     date?: SortOrder
   }
 
   export type invoicesSumOrderByAggregateInput = {
-    amount?: SortOrder
+    harga?: SortOrder
+    jumlah_beli?: SortOrder
   }
 
   export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
@@ -7549,11 +7702,25 @@ export namespace Prisma {
     connect?: MostProductsWhereUniqueInput | MostProductsWhereUniqueInput[]
   }
 
+  export type invoicesCreateNestedManyWithoutProductInput = {
+    create?: XOR<invoicesCreateWithoutProductInput, invoicesUncheckedCreateWithoutProductInput> | invoicesCreateWithoutProductInput[] | invoicesUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: invoicesCreateOrConnectWithoutProductInput | invoicesCreateOrConnectWithoutProductInput[]
+    createMany?: invoicesCreateManyProductInputEnvelope
+    connect?: invoicesWhereUniqueInput | invoicesWhereUniqueInput[]
+  }
+
   export type MostProductsUncheckedCreateNestedManyWithoutProductInput = {
     create?: XOR<MostProductsCreateWithoutProductInput, MostProductsUncheckedCreateWithoutProductInput> | MostProductsCreateWithoutProductInput[] | MostProductsUncheckedCreateWithoutProductInput[]
     connectOrCreate?: MostProductsCreateOrConnectWithoutProductInput | MostProductsCreateOrConnectWithoutProductInput[]
     createMany?: MostProductsCreateManyProductInputEnvelope
     connect?: MostProductsWhereUniqueInput | MostProductsWhereUniqueInput[]
+  }
+
+  export type invoicesUncheckedCreateNestedManyWithoutProductInput = {
+    create?: XOR<invoicesCreateWithoutProductInput, invoicesUncheckedCreateWithoutProductInput> | invoicesCreateWithoutProductInput[] | invoicesUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: invoicesCreateOrConnectWithoutProductInput | invoicesCreateOrConnectWithoutProductInput[]
+    createMany?: invoicesCreateManyProductInputEnvelope
+    connect?: invoicesWhereUniqueInput | invoicesWhereUniqueInput[]
   }
 
   export type MostProductsUpdateManyWithoutProductNestedInput = {
@@ -7570,6 +7737,20 @@ export namespace Prisma {
     deleteMany?: MostProductsScalarWhereInput | MostProductsScalarWhereInput[]
   }
 
+  export type invoicesUpdateManyWithoutProductNestedInput = {
+    create?: XOR<invoicesCreateWithoutProductInput, invoicesUncheckedCreateWithoutProductInput> | invoicesCreateWithoutProductInput[] | invoicesUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: invoicesCreateOrConnectWithoutProductInput | invoicesCreateOrConnectWithoutProductInput[]
+    upsert?: invoicesUpsertWithWhereUniqueWithoutProductInput | invoicesUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: invoicesCreateManyProductInputEnvelope
+    set?: invoicesWhereUniqueInput | invoicesWhereUniqueInput[]
+    disconnect?: invoicesWhereUniqueInput | invoicesWhereUniqueInput[]
+    delete?: invoicesWhereUniqueInput | invoicesWhereUniqueInput[]
+    connect?: invoicesWhereUniqueInput | invoicesWhereUniqueInput[]
+    update?: invoicesUpdateWithWhereUniqueWithoutProductInput | invoicesUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: invoicesUpdateManyWithWhereWithoutProductInput | invoicesUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: invoicesScalarWhereInput | invoicesScalarWhereInput[]
+  }
+
   export type MostProductsUncheckedUpdateManyWithoutProductNestedInput = {
     create?: XOR<MostProductsCreateWithoutProductInput, MostProductsUncheckedCreateWithoutProductInput> | MostProductsCreateWithoutProductInput[] | MostProductsUncheckedCreateWithoutProductInput[]
     connectOrCreate?: MostProductsCreateOrConnectWithoutProductInput | MostProductsCreateOrConnectWithoutProductInput[]
@@ -7582,6 +7763,20 @@ export namespace Prisma {
     update?: MostProductsUpdateWithWhereUniqueWithoutProductInput | MostProductsUpdateWithWhereUniqueWithoutProductInput[]
     updateMany?: MostProductsUpdateManyWithWhereWithoutProductInput | MostProductsUpdateManyWithWhereWithoutProductInput[]
     deleteMany?: MostProductsScalarWhereInput | MostProductsScalarWhereInput[]
+  }
+
+  export type invoicesUncheckedUpdateManyWithoutProductNestedInput = {
+    create?: XOR<invoicesCreateWithoutProductInput, invoicesUncheckedCreateWithoutProductInput> | invoicesCreateWithoutProductInput[] | invoicesUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: invoicesCreateOrConnectWithoutProductInput | invoicesCreateOrConnectWithoutProductInput[]
+    upsert?: invoicesUpsertWithWhereUniqueWithoutProductInput | invoicesUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: invoicesCreateManyProductInputEnvelope
+    set?: invoicesWhereUniqueInput | invoicesWhereUniqueInput[]
+    disconnect?: invoicesWhereUniqueInput | invoicesWhereUniqueInput[]
+    delete?: invoicesWhereUniqueInput | invoicesWhereUniqueInput[]
+    connect?: invoicesWhereUniqueInput | invoicesWhereUniqueInput[]
+    update?: invoicesUpdateWithWhereUniqueWithoutProductInput | invoicesUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: invoicesUpdateManyWithWhereWithoutProductInput | invoicesUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: invoicesScalarWhereInput | invoicesScalarWhereInput[]
   }
 
   export type invoicesCreateNestedManyWithoutCustomerInput = {
@@ -7632,6 +7827,12 @@ export namespace Prisma {
     connect?: customersWhereUniqueInput
   }
 
+  export type ProductsCreateNestedOneWithoutInvoicesInput = {
+    create?: XOR<ProductsCreateWithoutInvoicesInput, ProductsUncheckedCreateWithoutInvoicesInput>
+    connectOrCreate?: ProductsCreateOrConnectWithoutInvoicesInput
+    connect?: ProductsWhereUniqueInput
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
@@ -7642,6 +7843,14 @@ export namespace Prisma {
     upsert?: customersUpsertWithoutInvoicesInput
     connect?: customersWhereUniqueInput
     update?: XOR<XOR<customersUpdateToOneWithWhereWithoutInvoicesInput, customersUpdateWithoutInvoicesInput>, customersUncheckedUpdateWithoutInvoicesInput>
+  }
+
+  export type ProductsUpdateOneRequiredWithoutInvoicesNestedInput = {
+    create?: XOR<ProductsCreateWithoutInvoicesInput, ProductsUncheckedCreateWithoutInvoicesInput>
+    connectOrCreate?: ProductsCreateOrConnectWithoutInvoicesInput
+    upsert?: ProductsUpsertWithoutInvoicesInput
+    connect?: ProductsWhereUniqueInput
+    update?: XOR<XOR<ProductsUpdateToOneWithWhereWithoutInvoicesInput, ProductsUpdateWithoutInvoicesInput>, ProductsUncheckedUpdateWithoutInvoicesInput>
   }
 
   export type NestedUuidFilter<$PrismaModel = never> = {
@@ -7768,6 +7977,7 @@ export namespace Prisma {
     nama_produk: string
     harga: number
     image_url: string
+    invoices?: invoicesCreateNestedManyWithoutProductInput
   }
 
   export type ProductsUncheckedCreateWithoutMostProductsInput = {
@@ -7775,6 +7985,7 @@ export namespace Prisma {
     nama_produk: string
     harga: number
     image_url: string
+    invoices?: invoicesUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type ProductsCreateOrConnectWithoutMostProductsInput = {
@@ -7798,6 +8009,7 @@ export namespace Prisma {
     nama_produk?: StringFieldUpdateOperationsInput | string
     harga?: IntFieldUpdateOperationsInput | number
     image_url?: StringFieldUpdateOperationsInput | string
+    invoices?: invoicesUpdateManyWithoutProductNestedInput
   }
 
   export type ProductsUncheckedUpdateWithoutMostProductsInput = {
@@ -7805,18 +8017,19 @@ export namespace Prisma {
     nama_produk?: StringFieldUpdateOperationsInput | string
     harga?: IntFieldUpdateOperationsInput | number
     image_url?: StringFieldUpdateOperationsInput | string
+    invoices?: invoicesUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type MostProductsCreateWithoutProductInput = {
     nama_produk: string
     harga: number
-    total_beli: string
+    jumlah_beli: number
   }
 
   export type MostProductsUncheckedCreateWithoutProductInput = {
     nama_produk: string
     harga: number
-    total_beli: string
+    jumlah_beli: number
   }
 
   export type MostProductsCreateOrConnectWithoutProductInput = {
@@ -7826,6 +8039,36 @@ export namespace Prisma {
 
   export type MostProductsCreateManyProductInputEnvelope = {
     data: MostProductsCreateManyProductInput | MostProductsCreateManyProductInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type invoicesCreateWithoutProductInput = {
+    id?: string
+    nama_produk: string
+    harga: number
+    jumlah_beli: number
+    status: string
+    date: Date | string
+    customer: customersCreateNestedOneWithoutInvoicesInput
+  }
+
+  export type invoicesUncheckedCreateWithoutProductInput = {
+    id?: string
+    customer_id: string
+    nama_produk: string
+    harga: number
+    jumlah_beli: number
+    status: string
+    date: Date | string
+  }
+
+  export type invoicesCreateOrConnectWithoutProductInput = {
+    where: invoicesWhereUniqueInput
+    create: XOR<invoicesCreateWithoutProductInput, invoicesUncheckedCreateWithoutProductInput>
+  }
+
+  export type invoicesCreateManyProductInputEnvelope = {
+    data: invoicesCreateManyProductInput | invoicesCreateManyProductInput[]
     skipDuplicates?: boolean
   }
 
@@ -7852,19 +8095,55 @@ export namespace Prisma {
     id_product?: UuidFilter<"MostProducts"> | string
     nama_produk?: StringFilter<"MostProducts"> | string
     harga?: IntFilter<"MostProducts"> | number
-    total_beli?: StringFilter<"MostProducts"> | string
+    jumlah_beli?: IntFilter<"MostProducts"> | number
+  }
+
+  export type invoicesUpsertWithWhereUniqueWithoutProductInput = {
+    where: invoicesWhereUniqueInput
+    update: XOR<invoicesUpdateWithoutProductInput, invoicesUncheckedUpdateWithoutProductInput>
+    create: XOR<invoicesCreateWithoutProductInput, invoicesUncheckedCreateWithoutProductInput>
+  }
+
+  export type invoicesUpdateWithWhereUniqueWithoutProductInput = {
+    where: invoicesWhereUniqueInput
+    data: XOR<invoicesUpdateWithoutProductInput, invoicesUncheckedUpdateWithoutProductInput>
+  }
+
+  export type invoicesUpdateManyWithWhereWithoutProductInput = {
+    where: invoicesScalarWhereInput
+    data: XOR<invoicesUpdateManyMutationInput, invoicesUncheckedUpdateManyWithoutProductInput>
+  }
+
+  export type invoicesScalarWhereInput = {
+    AND?: invoicesScalarWhereInput | invoicesScalarWhereInput[]
+    OR?: invoicesScalarWhereInput[]
+    NOT?: invoicesScalarWhereInput | invoicesScalarWhereInput[]
+    id?: UuidFilter<"invoices"> | string
+    id_product?: UuidFilter<"invoices"> | string
+    customer_id?: UuidFilter<"invoices"> | string
+    nama_produk?: StringFilter<"invoices"> | string
+    harga?: IntFilter<"invoices"> | number
+    jumlah_beli?: IntFilter<"invoices"> | number
+    status?: StringFilter<"invoices"> | string
+    date?: DateTimeFilter<"invoices"> | Date | string
   }
 
   export type invoicesCreateWithoutCustomerInput = {
     id?: string
-    amount: number
+    nama_produk: string
+    harga: number
+    jumlah_beli: number
     status: string
     date: Date | string
+    product: ProductsCreateNestedOneWithoutInvoicesInput
   }
 
   export type invoicesUncheckedCreateWithoutCustomerInput = {
     id?: string
-    amount: number
+    id_product: string
+    nama_produk: string
+    harga: number
+    jumlah_beli: number
     status: string
     date: Date | string
   }
@@ -7895,17 +8174,6 @@ export namespace Prisma {
     data: XOR<invoicesUpdateManyMutationInput, invoicesUncheckedUpdateManyWithoutCustomerInput>
   }
 
-  export type invoicesScalarWhereInput = {
-    AND?: invoicesScalarWhereInput | invoicesScalarWhereInput[]
-    OR?: invoicesScalarWhereInput[]
-    NOT?: invoicesScalarWhereInput | invoicesScalarWhereInput[]
-    id?: UuidFilter<"invoices"> | string
-    customer_id?: UuidFilter<"invoices"> | string
-    amount?: IntFilter<"invoices"> | number
-    status?: StringFilter<"invoices"> | string
-    date?: DateTimeFilter<"invoices"> | Date | string
-  }
-
   export type customersCreateWithoutInvoicesInput = {
     id?: string
     name: string
@@ -7923,6 +8191,27 @@ export namespace Prisma {
   export type customersCreateOrConnectWithoutInvoicesInput = {
     where: customersWhereUniqueInput
     create: XOR<customersCreateWithoutInvoicesInput, customersUncheckedCreateWithoutInvoicesInput>
+  }
+
+  export type ProductsCreateWithoutInvoicesInput = {
+    id_product?: string
+    nama_produk: string
+    harga: number
+    image_url: string
+    MostProducts?: MostProductsCreateNestedManyWithoutProductInput
+  }
+
+  export type ProductsUncheckedCreateWithoutInvoicesInput = {
+    id_product?: string
+    nama_produk: string
+    harga: number
+    image_url: string
+    MostProducts?: MostProductsUncheckedCreateNestedManyWithoutProductInput
+  }
+
+  export type ProductsCreateOrConnectWithoutInvoicesInput = {
+    where: ProductsWhereUniqueInput
+    create: XOR<ProductsCreateWithoutInvoicesInput, ProductsUncheckedCreateWithoutInvoicesInput>
   }
 
   export type customersUpsertWithoutInvoicesInput = {
@@ -7950,54 +8239,133 @@ export namespace Prisma {
     image_url?: StringFieldUpdateOperationsInput | string
   }
 
+  export type ProductsUpsertWithoutInvoicesInput = {
+    update: XOR<ProductsUpdateWithoutInvoicesInput, ProductsUncheckedUpdateWithoutInvoicesInput>
+    create: XOR<ProductsCreateWithoutInvoicesInput, ProductsUncheckedCreateWithoutInvoicesInput>
+    where?: ProductsWhereInput
+  }
+
+  export type ProductsUpdateToOneWithWhereWithoutInvoicesInput = {
+    where?: ProductsWhereInput
+    data: XOR<ProductsUpdateWithoutInvoicesInput, ProductsUncheckedUpdateWithoutInvoicesInput>
+  }
+
+  export type ProductsUpdateWithoutInvoicesInput = {
+    id_product?: StringFieldUpdateOperationsInput | string
+    nama_produk?: StringFieldUpdateOperationsInput | string
+    harga?: IntFieldUpdateOperationsInput | number
+    image_url?: StringFieldUpdateOperationsInput | string
+    MostProducts?: MostProductsUpdateManyWithoutProductNestedInput
+  }
+
+  export type ProductsUncheckedUpdateWithoutInvoicesInput = {
+    id_product?: StringFieldUpdateOperationsInput | string
+    nama_produk?: StringFieldUpdateOperationsInput | string
+    harga?: IntFieldUpdateOperationsInput | number
+    image_url?: StringFieldUpdateOperationsInput | string
+    MostProducts?: MostProductsUncheckedUpdateManyWithoutProductNestedInput
+  }
+
   export type MostProductsCreateManyProductInput = {
     nama_produk: string
     harga: number
-    total_beli: string
+    jumlah_beli: number
+  }
+
+  export type invoicesCreateManyProductInput = {
+    id?: string
+    customer_id: string
+    nama_produk: string
+    harga: number
+    jumlah_beli: number
+    status: string
+    date: Date | string
   }
 
   export type MostProductsUpdateWithoutProductInput = {
     nama_produk?: StringFieldUpdateOperationsInput | string
     harga?: IntFieldUpdateOperationsInput | number
-    total_beli?: StringFieldUpdateOperationsInput | string
+    jumlah_beli?: IntFieldUpdateOperationsInput | number
   }
 
   export type MostProductsUncheckedUpdateWithoutProductInput = {
     nama_produk?: StringFieldUpdateOperationsInput | string
     harga?: IntFieldUpdateOperationsInput | number
-    total_beli?: StringFieldUpdateOperationsInput | string
+    jumlah_beli?: IntFieldUpdateOperationsInput | number
   }
 
   export type MostProductsUncheckedUpdateManyWithoutProductInput = {
     nama_produk?: StringFieldUpdateOperationsInput | string
     harga?: IntFieldUpdateOperationsInput | number
-    total_beli?: StringFieldUpdateOperationsInput | string
+    jumlah_beli?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type invoicesUpdateWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nama_produk?: StringFieldUpdateOperationsInput | string
+    harga?: IntFieldUpdateOperationsInput | number
+    jumlah_beli?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    customer?: customersUpdateOneRequiredWithoutInvoicesNestedInput
+  }
+
+  export type invoicesUncheckedUpdateWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customer_id?: StringFieldUpdateOperationsInput | string
+    nama_produk?: StringFieldUpdateOperationsInput | string
+    harga?: IntFieldUpdateOperationsInput | number
+    jumlah_beli?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type invoicesUncheckedUpdateManyWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customer_id?: StringFieldUpdateOperationsInput | string
+    nama_produk?: StringFieldUpdateOperationsInput | string
+    harga?: IntFieldUpdateOperationsInput | number
+    jumlah_beli?: IntFieldUpdateOperationsInput | number
+    status?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type invoicesCreateManyCustomerInput = {
     id?: string
-    amount: number
+    id_product: string
+    nama_produk: string
+    harga: number
+    jumlah_beli: number
     status: string
     date: Date | string
   }
 
   export type invoicesUpdateWithoutCustomerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
+    nama_produk?: StringFieldUpdateOperationsInput | string
+    harga?: IntFieldUpdateOperationsInput | number
+    jumlah_beli?: IntFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
+    product?: ProductsUpdateOneRequiredWithoutInvoicesNestedInput
   }
 
   export type invoicesUncheckedUpdateWithoutCustomerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
+    id_product?: StringFieldUpdateOperationsInput | string
+    nama_produk?: StringFieldUpdateOperationsInput | string
+    harga?: IntFieldUpdateOperationsInput | number
+    jumlah_beli?: IntFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type invoicesUncheckedUpdateManyWithoutCustomerInput = {
     id?: StringFieldUpdateOperationsInput | string
-    amount?: IntFieldUpdateOperationsInput | number
+    id_product?: StringFieldUpdateOperationsInput | string
+    nama_produk?: StringFieldUpdateOperationsInput | string
+    harga?: IntFieldUpdateOperationsInput | number
+    jumlah_beli?: IntFieldUpdateOperationsInput | number
     status?: StringFieldUpdateOperationsInput | string
     date?: DateTimeFieldUpdateOperationsInput | Date | string
   }

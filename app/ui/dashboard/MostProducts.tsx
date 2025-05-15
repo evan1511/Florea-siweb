@@ -2,24 +2,30 @@ import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 import Image from 'next/image';
 import { lusitana } from '@/app/ui/fonts';
-import { MostProduct, } from '@/app/lib/definitions';
+import { MostProducts } from '@/app/lib/definitions';
+import { fetchMostPopularProducts } from '@/app/lib/prisma';
 
-export default async function MostPopularProducts({
-  mostProducts,
-}: {
-  mostProducts: MostProduct[];
-}) {
+import { mostproduct } from '@/app/lib/placeholder-data';
+
+export default async function MostProduct({
+produklaris,
+  }: {
+    produklaris: MostProducts[];
+  }) {
+ 
   return (
     <div className="flex w-full flex-col md:col-span-4">
       <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
-        Most Popular Products
+        Product Terlaris
       </h2>
       <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
+        {/* NOTE: Uncomment this code in Chapter 7 */}
+
         <div className="bg-white px-6">
-          {mostProducts.map((product, i) => {
+          {produklaris.map((mostproduct, i) => {
             return (
               <div
-                key={product.id}
+                key={mostproduct.id_produk}
                 className={clsx(
                   'flex flex-row items-center justify-between py-4',
                   {
@@ -30,15 +36,17 @@ export default async function MostPopularProducts({
                 <div className="flex items-center">
                   <div className="min-w-0">
                     <p className="truncate text-sm font-semibold md:text-base">
-                      {product.name}
+                      {mostproduct.nama_produk}
                     </p>
                     <p className="hidden text-sm text-gray-500 sm:block">
-                      ID: {product.id}
+                      {mostproduct.harga}
                     </p>
                   </div>
                 </div>
-                <p className={`${lusitana.className} truncate text-sm font-medium md:text-base`}>
-                  ${product.amount}
+                <p
+                  className={`${lusitana.className} truncate text-sm font-medium md:text-base`}
+                >
+                  {mostproduct.jumlah_beli}
                 </p>
               </div>
             );
@@ -46,7 +54,7 @@ export default async function MostPopularProducts({
         </div>
         <div className="flex items-center pb-2 pt-6">
           <ArrowPathIcon className="h-5 w-5 text-gray-500" />
-          <h3 className="ml-2 text-sm text-gray-500">Updated just now</h3>
+          <h3 className="ml-2 text-sm text-gray-500 ">Updated just now</h3>
         </div>
       </div>
     </div>
