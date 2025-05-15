@@ -9,7 +9,7 @@ datasource db {
 }
 
 model MostProducts {
-  id_product  String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  id_product  String @id @default(uuid()) @db.Uuid
   nama_produk String @db.VarChar(255)
   harga       Int
   jumlah_beli Int
@@ -18,7 +18,7 @@ model MostProducts {
 }
 
 model Products {
-  id_product  String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  id_product  String @id @default(uuid()) @db.Uuid
   nama_produk String @db.VarChar(255)
   harga       Int
   image_url   String @db.VarChar(255)
@@ -28,7 +28,7 @@ model Products {
 }
 
 model customers {
-  id        String @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  id        String @id @default(uuid()) @db.Uuid
   name      String @db.VarChar(255)
   email     String @db.VarChar(255)
   image_url String @db.VarChar(255)
@@ -37,7 +37,7 @@ model customers {
 }
 
 model invoices {
-  id          String   @id @default(dbgenerated("uuid_generate_v4()")) @db.Uuid
+  id          String   @id @default(uuid()) @db.Uuid
   id_product  String   @db.Uuid
   customer_id String   @db.Uuid
   nama_produk String   @db.VarChar(255)
